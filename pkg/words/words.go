@@ -11,7 +11,7 @@ import (
 
 var requestUrl string = "https://random-word-api.herokuapp.com/word?number="
 
-func GetWords(count int) {
+func GetWords(count int, seperator string) string {
 
 	if count <= 0 {
 		count = 1
@@ -31,8 +31,6 @@ func GetWords(count int) {
 		os.Exit(1)
 	}
 	
-	fmt.Printf("Http call returned code: %d\n", res.StatusCode)
-	
 	resBody, err := io.ReadAll(res.Body)
 	if err != nil {
 		fmt.Printf("error reading response body: %s\n", err)
@@ -45,8 +43,17 @@ func GetWords(count int) {
 		fmt.Printf("error while parsing the response body: %s\n", err)
 	}
 
-	fmt.Printf("Http call returned %d words\n", len(words))
+	outString := ""
+	
+	//fmt.Print(words)
 	for index, word := range words {
-		fmt.Printf("%d. %s\n", index + 1, word)
+	//	fmt.Printf("Adding %s to %s", word, outString)
+		outString += word
+		if index + 1 < len(words) {
+			outString += string(seperator)
+		}
+	//	fmt.Printf("Resulting in %s", outString)
 	}
+
+	return outString
 }
