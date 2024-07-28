@@ -9,7 +9,7 @@ import (
 
 var numberCount int8
 var numberCmd = &cobra.Command{
-	Use: "number",
+	Use:   "number",
 	Short: "Generate a random number",
 	Run: func(cmd *cobra.Command, args []string) {
 		res := random.RandomInt(numberCount)
@@ -17,9 +17,7 @@ var numberCmd = &cobra.Command{
 	},
 }
 
-
-
 func init() {
-	numberCmd.Flags().Int8VarP(&numberCount, "digits", "d", 4, "Number of digits")
+	numberCmd.Flags().Int8VarP(&numberCount, "count", "c", 4, "Number of digits")
 	rootCmd.AddCommand(numberCmd)
 }
