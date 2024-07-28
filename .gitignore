@@ -2,3 +2,4 @@ pwgen
 main
 ./bin
 .idea
+coverage.html
