@@ -94,5 +94,17 @@ func TestCharacterSet(t *testing.T) {
 			t.Fail()
 		}
 	}
+}
 
+func TestRangeMapper(t *testing.T) {
+	mapped := mapRange(5, 0, 10, 0, 100)
+	if mapped != 50 {
+		t.Logf("Mapped value is %d, want 50", mapped)
+		t.Fail()
+	}
+	mapped = mapRange(50, 0, 100, 0, 10)
+	if mapped != 5 {
+		t.Logf("Mapped value is %d, want 5", mapped)
+		t.Fail()
+	}
 }
