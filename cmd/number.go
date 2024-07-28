@@ -7,12 +7,12 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var count int8
-var randomCmd = &cobra.Command{
+var numberCount int8
+var numberCmd = &cobra.Command{
 	Use: "number",
 	Short: "Generate a random number",
 	Run: func(cmd *cobra.Command, args []string) {
-		res := random.RandomInt(count)
+		res := random.RandomInt(numberCount)
 		fmt.Println(res)
 	},
 }
@@ -20,6 +20,6 @@ var randomCmd = &cobra.Command{
 
 
 func init() {
-	randomCmd.Flags().Int8VarP(&count, "digits", "d", 4, "Number of digits")
-	rootCmd.AddCommand(randomCmd)
+	numberCmd.Flags().Int8VarP(&numberCount, "digits", "d", 4, "Number of digits")
+	rootCmd.AddCommand(numberCmd)
 }
