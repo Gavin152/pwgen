@@ -14,7 +14,7 @@ A command line tool to quickly create a random password.
 
 ### SEE ALSO
 
-* [pwgen completion](##pwgen-completion)	 - Generate the autocompletion script for the specified shell
+* [pwgen completion](#pwgen-completion)	 - Generate the autocompletion script for the specified shell
 * [pwgen number](pwgen_number.md)	 - Generate a random number
 * [pwgen phrase](pwgen_phrase.md)	 - Generate a phrase of multiple words, leveraging the words API
 * [pwgen random](pwgen_random.md)	 - Generate a random string
