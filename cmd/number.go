@@ -19,5 +19,5 @@ var numberCmd = &cobra.Command{
 
 func init() {
 	numberCmd.Flags().Int8VarP(&numberCount, "count", "c", 4, "Number of digits")
-	rootCmd.AddCommand(numberCmd)
+	RootCmd.AddCommand(numberCmd)
 }

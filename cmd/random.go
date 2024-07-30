@@ -34,5 +34,5 @@ func init() {
 	randomCmd.Flags().BoolVarP(&randomNumber, "numbers", "n", false, "include numbers")
 	randomCmd.Flags().BoolVarP(&randomSymbol, "symbols", "s", false, "include special characters: ")
 	randomCmd.Flags().IntVarP(&randomCount, "count", "c", 12, "Number of characters")
-	rootCmd.AddCommand(randomCmd)
+	RootCmd.AddCommand(randomCmd)
 }

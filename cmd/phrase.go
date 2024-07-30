@@ -26,5 +26,5 @@ var phraseCmd = &cobra.Command{
 func init() {
 	phraseCmd.Flags().StringVarP(&wordSeparator, "separator", "s", "-", "Separator bewteen words")
 	phraseCmd.Flags().IntVarP(&wordCount, "count", "c", 3, "Number of words to fetch")
-	rootCmd.AddCommand(phraseCmd)
+	RootCmd.AddCommand(phraseCmd)
 }
