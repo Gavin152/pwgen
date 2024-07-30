@@ -38,7 +38,7 @@ pwgen number [flags]
 
 ### SEE ALSO
 
-* [pwgen](pwgen.md)	 - quickly create a random password
+* [pwgen](docs/pwgen.md)	 - quickly create a random password
 
 ---
 
@@ -67,7 +67,7 @@ pwgen phrase [flags]
 
 ### SEE ALSO
 
-* [pwgen](pwgen.md)	 - quickly create a random password
+* [pwgen](docs/pwgen.md)	 - quickly create a random password
 
 ---
 
@@ -92,7 +92,7 @@ pwgen random [flags]
 
 ### SEE ALSO
 
-* [pwgen](pwgen.md)	 - quickly create a random password
+* [pwgen](docs/pwgen.md)	 - quickly create a random password
 
 ---
 
@@ -114,9 +114,9 @@ See each sub-command's help for details on how to use the generated script.
 
 ### SEE ALSO
 
-* [pwgen](pwgen.md)	 - quickly create a random password
-* [pwgen completion bash](pwgen_completion_bash.md)	 - Generate the autocompletion script for bash
-* [pwgen completion fish](pwgen_completion_fish.md)	 - Generate the autocompletion script for fish
-* [pwgen completion powershell](pwgen_completion_powershell.md)	 - Generate the autocompletion script for powershell
-* [pwgen completion zsh](pwgen_completion_zsh.md)	 - Generate the autocompletion script for zsh
+* [pwgen](docs/pwgen.md)	 - quickly create a random password
+* [pwgen completion bash](docs/pwgen_completion_bash.md)	 - Generate the autocompletion script for bash
+* [pwgen completion fish](docs/pwgen_completion_fish.md)	 - Generate the autocompletion script for fish
+* [pwgen completion powershell](docs/pwgen_completion_powershell.md)	 - Generate the autocompletion script for powershell
+* [pwgen completion zsh](docs/pwgen_completion_zsh.md)	 - Generate the autocompletion script for zsh
 
