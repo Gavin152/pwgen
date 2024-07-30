@@ -1,7 +1,7 @@
 package random
 
 import (
-	"regexp"
+	"github.com/stretchr/testify/assert"
 	"strconv"
 	"testing"
 )
@@ -10,19 +10,26 @@ func TestDigitCount(t *testing.T) {
 	count := 13
 	rNum := RandomInt(int8(count))
 	rStr := strconv.Itoa(int(rNum))
-	rNumDigits := len(rStr)
-	if rNumDigits != count {
-		t.Fatalf(`%d is not of length %d`, rNumDigits, count)
-	}
+	assert.Equalf(t, count, len(rStr), "random number %d should contain %d digits", rNum, count)
 }
 
 func TestRandomness(t *testing.T) {
 	count := 8
 	rNum_01 := RandomInt(int8(count))
 	rNum_02 := RandomInt(int8(count))
-	if rNum_01 == rNum_02 {
-		t.Fatalf(`Random int 1 was equal to int 2. %d == %d`, rNum_01, rNum_02)
+	assert.NotEqualf(t, rNum_01, rNum_02, "Both numbers should not be equal")
+}
+
+func TestRandomChars(t *testing.T) {
+	count := 25
+	options := RandomOptions{
+		Lower:   true,
+		Upper:   true,
+		Numbers: false,
+		Symbols: false,
 	}
+	randString := RandomChars(count, &options)
+	assert.Equalf(t, count, len(randString), "Random string should be %d characters long", count)
 }
 
 func TestCharacterSet(t *testing.T) {
@@ -88,23 +95,14 @@ func TestCharacterSet(t *testing.T) {
 
 	for key, scenario := range scenarios {
 		charSet := inputChars(&scenario.options)
-		found, _ := regexp.MatchString(scenario.matchString, charSet)
-		if !found {
-			t.Logf("Character set is invalid for %s: %s", key, charSet)
-			t.Fail()
-		}
+		assert.Regexpf(t, scenario.matchString, charSet, "character set of %s should not match regex %s. CharSet: '%s'", key, scenario.matchString, charSet)
 	}
 }
 
 func TestRangeMapper(t *testing.T) {
 	mapped := mapRange(5, 0, 10, 0, 100)
-	if mapped != 50 {
-		t.Logf("Mapped value is %d, want 50", mapped)
-		t.Fail()
-	}
+	assert.Equalf(t, 50, mapped, "Mapping low range to high range failed")
+
 	mapped = mapRange(50, 0, 100, 0, 10)
-	if mapped != 5 {
-		t.Logf("Mapped value is %d, want 5", mapped)
-		t.Fail()
-	}
+	assert.Equalf(t, 5, mapped, "Mapping high range to low range failed")
 }

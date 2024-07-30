@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"pwgen/pkg/random"
+	"pwgen/internal/random"
 
 	"github.com/spf13/cobra"
 )

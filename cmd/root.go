@@ -5,7 +5,7 @@ package cmd
 
 import (
 	"os"
-	//"pwgen/pkg/words"
+	//"pwgen/internal/words"
 
 	"github.com/spf13/cobra"
 )
@@ -14,12 +14,12 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "pwgen",
 	Short: "quickly create a random password",
-	Long: `A command line tool to quickly create a random password.`,
+	Long:  `A command line tool to quickly create a random password.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
-//		Run: func(cmd *cobra.Command, args []string) {
-//			words.GetWords(number);
-//		},
+	//		Run: func(cmd *cobra.Command, args []string) {
+	//			words.GetWords(number);
+	//		},
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
