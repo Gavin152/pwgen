@@ -3,8 +3,7 @@ package random
 import (
 	"crypto/rand"
 	"fmt"
-	"math"
-	"math/big"
+	"strconv"
 	"strings"
 )
 
@@ -15,18 +14,20 @@ type RandomOptions struct {
 	Symbols bool
 }
 
-func RandomInt(count int8) uint64 {
-	c := 8
-	rawSlice := make([]byte, c)
+func RandomIntAsString(count int) string {
+	rawSlice := make([]byte, count)
+	numString := ""
 
 	_, err := rand.Read(rawSlice)
 	if err != nil {
 		fmt.Println("error generating random byte slice:", err)
 	}
 
-	generatedNumber := big.NewInt(0).SetBytes(rawSlice).Uint64()
-	stripped := generatedNumber % uint64((math.Pow(float64(10), float64(count))))
-	return stripped
+	for _, b := range rawSlice {
+		numString += strconv.Itoa(int(b % 10))
+	}
+
+	return numString
 }
 
 func RandomChars(count int, options *RandomOptions) string {
@@ -34,8 +35,11 @@ func RandomChars(count int, options *RandomOptions) string {
 	characterPool := []rune(inputChars(options))
 
 	for i := 0; i < count; i++ {
-		loc := int(RandomInt(int8(2)))
-		//fmt.Printf("Random numder generated: %d\n", loc)
+		locString := RandomIntAsString(2)
+		loc, err := strconv.Atoi(locString)
+		if err != nil {
+			fmt.Printf("Encountered an error when parsing random number string into int: %s", locString)
+		}
 		mapped := mapRange(float64(loc), 0, 99, 0, float64(len(characterPool)-1))
 		//fmt.Printf("Random number mapped: %d\n", mapped)
 		outputString += string(characterPool[mapped])

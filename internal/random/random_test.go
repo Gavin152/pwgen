@@ -2,22 +2,20 @@ package random
 
 import (
 	"github.com/stretchr/testify/assert"
-	"strconv"
 	"testing"
 )
 
 func TestDigitCount(t *testing.T) {
 	count := 13
-	rNum := RandomInt(int8(count))
-	rStr := strconv.Itoa(int(rNum))
-	assert.Equalf(t, count, len(rStr), "random number %d should contain %d digits", rNum, count)
+	rNum := RandomIntAsString(count)
+	assert.Equalf(t, count, len(rNum), "random number %d should contain %d digits", rNum, count)
 }
 
 func TestRandomness(t *testing.T) {
 	count := 8
-	rNum_01 := RandomInt(int8(count))
-	rNum_02 := RandomInt(int8(count))
-	assert.NotEqualf(t, rNum_01, rNum_02, "Both numbers should not be equal")
+	rnum01 := RandomIntAsString(count)
+	rnum02 := RandomIntAsString(count)
+	assert.NotEqualf(t, rnum01, rnum02, "Both numbers should not be equal")
 }
 
 func TestRandomChars(t *testing.T) {
